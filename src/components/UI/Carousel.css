@@ -1,0 +1,10 @@
+.carousel {
+    padding-top: 30px ;
+}
+
+.carousel-itme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white
+}
