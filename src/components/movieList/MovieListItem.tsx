@@ -1,5 +1,6 @@
 import React, {CSSProperties} from 'react';
 import {btn, img, margin, style} from "./MovieStyle";
+import Button from "../UI/Button/Button";
 
 type Props = {
     src: string,
@@ -27,7 +28,8 @@ const MovieListItem: React.FC<Props> = (
             <strong style={margin}>{title}</strong>
             <span style={margin}>{voteAverage}</span>
             <span style={margin}>{releaseDate}</span>
-            <button style={btn} onClick={() => console.log(id)}>+</button>
+            {/*<button style={btn} onClick={() => console.log(id)}>+</button>*/}
+            <Button style={btn} callback={() => console.log(id)}>+</Button>
         </div>
     );
 };
