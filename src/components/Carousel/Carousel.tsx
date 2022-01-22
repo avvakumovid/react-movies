@@ -4,16 +4,17 @@ import {useAction} from "../../hooks/useAction";
 import AliceCarousel from "react-alice-carousel";
 import 'react-alice-carousel/lib/alice-carousel.css';
 import './Carousel.css'
+import {useNavigate} from "react-router-dom";
 
 const Carousel: React.FC = () => {
     const {genre, loading, error} = useTypedSelector(state => state.movie)
     const {fetchGenre} = useAction()
-
+    const navigate = useNavigate()
     useEffect(() => {
         fetchGenre()
     }, [])
 
-    const items = genre.map(g => <div className='carousel-itme'><img width={407} alt={'img'} src={g.img}/><h2>{g.name}</h2></div>)
+    const items = genre.map(g => <div onClick={() => navigate(`/genre/${g.id}`)} className='carousel-itme'><img width={407} alt={'img'} src={g.img}/><h2>{g.name}</h2></div>)
     const responsive = {
         0: {items: 1},
         568: {items: 2},

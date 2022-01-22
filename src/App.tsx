@@ -1,21 +1,18 @@
 import React from 'react';
 import './App.css';
-import Carousel from "./components/UI/Carousel";
+import Header from "./components/header/Header";
+import AppRouter from "./components/AppRouter";
 
 function App() {
+    return (
 
-  return (
-      <div className="wrapper">
-        <div className="container header">
-          <input className='searchInput' type='search'/>
-          <button className='loginBtn'>Log In</button>
+        <div className="wrapper">
+            <Header/>
+            <div className="container main">
+                <AppRouter/>
+            </div>
         </div>
-        <div className="container main">
-          <Carousel/>
-        </div>
-          {/*<Carousel/>*/}
-      </div>
-  );
+    );
 }
 
 export default App;
