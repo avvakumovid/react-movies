@@ -1,18 +1,13 @@
 import React from 'react';
-import CSS from 'csstype'
+import Button from "../UI/Button/Button";
+import {headerStyle} from "./HeaderStyle";
 
 const Header: React.FC = () => {
-    const headerStyle: CSS.Properties = {
-        backgroundColor: '#29313a',
-        display: 'flex',
-        justifyContent: 'space-between',
-    }
     return (
         <div className="container" style={headerStyle}>
             <input className='searchInput' type='search'/>
-            <button className='loginBtn'>Log In</button>
+            <Button style={{}} callback={() => {}}  >Login</Button>
         </div>
     );
 };
-
 export default Header;
