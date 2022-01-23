@@ -49,7 +49,7 @@ const MovieList: React.FC = () => {
                 let src = 'https://image.tmdb.org/t/p/w500/' + m.poster_path
                 return (
                     <MovieListItem src={src} title={m.title} id={m.id} overview={m.overview} key={m.id}
-                                   voteAverage={m.vote_average} releaseDate={m.release_date}/>
+                                   voteAverage={m.vote_average} releaseDate={m.release_date} _id={m._id}/>
                 )
             })}
         </div>

@@ -5,6 +5,7 @@ export interface MovieState {
     error: null | string;
     totalPages: number;
     itemInPage: number;
+    movie: any
 }
 
 export enum MovieActionTypes {
@@ -12,6 +13,7 @@ export enum MovieActionTypes {
     FETCH_GENRE_SUCCESS = 'FETCH_GENRE_SUCCESS',
     FETCH_GENRE_ERROR = 'FETCH_GENRE_ERROR',
     FETCH_MOVIES_BY_GENRE = 'FETCH_MOVIES_BY_GENRE',
+    FETCH_MOVIE_BY_ID = 'FETCH_MOVIE_BY_ID'
 }
 
 interface FetchGenreAction {
@@ -38,9 +40,14 @@ interface FetchMoviesByGenre {
     }
 }
 
+interface FetchMovieById {
+    type: MovieActionTypes.FETCH_MOVIE_BY_ID;
+    payload: any
+}
 
 export type MovieAction =
     FetchGenreAction
     | FetchGenreSuccessAction
     | FetchGenreErrorAction
     | FetchMoviesByGenre
+    | FetchMovieById

@@ -37,3 +37,16 @@ export const fetchMoviesByGenreId = (page: number, id: number) => {
         }
     }
 }
+
+export const fetchMovieById = (id: string | undefined) => {
+    return async (dispatch: Dispatch<MovieAction>) => {
+        try{
+            dispatch({type: MovieActionTypes.FETCH_GENRE})
+            let movie = await axios.get(`http://localhost:5000/api/movie/${id}`)
+            dispatch({type: MovieActionTypes.FETCH_MOVIE_BY_ID, payload: movie.data})
+        }catch (e) {
+            dispatch({type: MovieActionTypes.FETCH_GENRE_ERROR, payload: 'Ошибка при загруке жанров'})
+        }
+
+    }
+}

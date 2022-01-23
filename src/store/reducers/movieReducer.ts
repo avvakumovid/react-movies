@@ -7,6 +7,7 @@ const initialState: MovieState = {
     error: null,
     totalPages: 1,
     itemInPage: 20,
+    movie: null
 }
 export const movieReducer = (state = initialState, action: MovieAction): MovieState => {
     switch (action.type) {
@@ -24,6 +25,8 @@ export const movieReducer = (state = initialState, action: MovieAction): MovieSt
                 totalPages: action.payload.tottalPages,
                 itemInPage: action.payload.itemInPage
             }
+        case MovieActionTypes.FETCH_MOVIE_BY_ID:
+            return {...state, movie: action.payload}
         default:
             return state
     }
