@@ -32,3 +32,9 @@ export const btn: CSSProperties = {
 export const img: CSSProperties = {
     borderRadius: 5
 }
+
+export const block: CSSProperties = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+}
