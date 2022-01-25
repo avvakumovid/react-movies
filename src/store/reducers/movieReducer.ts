@@ -7,11 +7,12 @@ const initialState: MovieState = {
     error: null,
     totalPages: 1,
     itemInPage: 20,
-    movie: null
+    movie: null,
+    movieTreilerId: ''
 }
 export const movieReducer = (state = initialState, action: MovieAction): MovieState => {
     switch (action.type) {
-        case MovieActionTypes.FETCH_GENRE:
+        case MovieActionTypes.LOAD:
             return {...state, loading: true, error: null}
         case MovieActionTypes.FETCH_GENRE_SUCCESS:
             return {...state, loading: false, genre: action.payload}
@@ -27,6 +28,8 @@ export const movieReducer = (state = initialState, action: MovieAction): MovieSt
             }
         case MovieActionTypes.FETCH_MOVIE_BY_ID:
             return {...state, loading: false, movie: action.payload}
+        case MovieActionTypes.FETCH_MOVIE_TREILER_ID:
+            return {...state, movieTreilerId: action.payload }
         default:
             return state
     }

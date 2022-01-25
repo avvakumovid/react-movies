@@ -7,8 +7,7 @@ import Load from "../UI/Load/Load";
 import Trailer from "../UI/Trailer/Trailer";
 import ReactStars from 'react-stars';
 import LoadingOrError from "../UI/LoadingOrError/LoadingOrError";
-
-
+import {img, info, padding, style} from "./DetailStyle";
 
 const Detail: React.FC = () => {
     let {id} = useParams()
@@ -16,27 +15,8 @@ const Detail: React.FC = () => {
     useEffect(() => {
         fetchMovieById(id)
     }, [id])
-    let {error, loading, movie} = useTypedSelector(state => state.movie)
+    let {error, loading, movie, movieTreilerId} = useTypedSelector(state => state.movie)
 
-    let style = {
-        display: 'flex',
-        padding: 40
-    }
-
-    let img = {
-        width: '30%',
-
-    }
-    let ingo = {
-        width: '70%',
-
-    }
-
-
-
-    const padding:CSSProperties = {
-        paddingTop: 20
-    }
     if (movie) {
         let color = '';
         const raiting = parseInt(movie.vote_average)
@@ -54,9 +34,9 @@ const Detail: React.FC = () => {
                 <div style={img}>
                     <img width={300} alt='poster path' src={src}/>
                 </div>
-                <div style={ingo}>
+                <div style={info}>
                     <h1>{movie.original_title}</h1>
-                    <Trailer style={padding} witdh='560' height="315" moviePath="JfVOs4VSpmA" title="YouTube video player"/>
+                    <Trailer style={padding} witdh='560' height="315" moviePath={movieTreilerId} title="YouTube video player"/>
                     <ReactStars  count={10} value={8.8} size={50} edit={false} half={true} color2={color}/>
                     <h3 style={padding} color={color}>Raiting: {movie.vote_average}</h3>
                     <h3 style={padding}>Relese: {movie.release_date}</h3>
