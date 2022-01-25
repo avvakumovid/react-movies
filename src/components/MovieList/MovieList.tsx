@@ -5,6 +5,7 @@ import {useTypedSelector} from "../../hooks/useTypedSelector";
 import MovieListItem from "./MovieListItem";
 import Load from "../UI/Load/Load";
 import {block} from "./MovieStyle";
+import LoadingOrError from "../UI/LoadingOrError/LoadingOrError";
 
 const MovieList: React.FC = () => {
     let {id} = useParams()
@@ -25,18 +26,6 @@ const MovieList: React.FC = () => {
         fetchMoviesByGenreId(page, genreId)
     }, [page, genreId])
 
-    if (loading) {
-        return (
-            <div style={block}>
-                <Load/>
-            </div>)
-    }
-    if (error) {
-        return (
-            <div style={block}>
-                <h1>{error}</h1>
-            </div>)
-    }
     let style: CSSProperties = {
         display: 'flex',
         flexWrap: 'wrap',
@@ -45,6 +34,7 @@ const MovieList: React.FC = () => {
 
     return (
         <div style={block}>
+            <LoadingOrError loading={loading} error={error}/>
             {movies.map(m => {
                 let src = 'https://image.tmdb.org/t/p/w500/' + m.poster_path
                 return (

@@ -26,7 +26,7 @@ export const movieReducer = (state = initialState, action: MovieAction): MovieSt
                 itemInPage: action.payload.itemInPage
             }
         case MovieActionTypes.FETCH_MOVIE_BY_ID:
-            return {...state, movie: action.payload}
+            return {...state, loading: false, movie: action.payload}
         default:
             return state
     }

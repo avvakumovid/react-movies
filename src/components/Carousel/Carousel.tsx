@@ -5,6 +5,8 @@ import AliceCarousel from "react-alice-carousel";
 import 'react-alice-carousel/lib/alice-carousel.css';
 import './Carousel.css'
 import {useNavigate} from "react-router-dom";
+import {block} from "../MovieList/MovieStyle";
+import LoadingOrError from "../UI/LoadingOrError/LoadingOrError";
 
 const Carousel: React.FC = () => {
     const {genre, loading, error} = useTypedSelector(state => state.movie)
@@ -28,7 +30,9 @@ const Carousel: React.FC = () => {
         return <h1>{error}</h1>
     }
     return (
+
         <div className='carousel'>
+            <LoadingOrError loading={loading} error={error}/>
             <AliceCarousel items={items} responsive={responsive}/>
         </div>
 
