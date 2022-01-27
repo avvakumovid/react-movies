@@ -7,7 +7,7 @@ import Detail from "./components/Detail/Detail";
 const AppRouter = () => {
     return (
             <Routes>
-                <Route  path="*" element={ <Carousel/>} />
+                <Route path="*" element={ <Carousel/>} />
                 <Route path='/genre/:id' element={<MovieList/>}/>
                 <Route path='detail/:id' element={<Detail />}/>
             </Routes>
