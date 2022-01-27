@@ -42,12 +42,15 @@ export const fetchMoviesByGenreId = (page: number, id: number) => {
 export const fetchMovieById = (id: string | undefined) => {
     return async (dispatch: Dispatch<MovieAction>) => {
         try {
+            if(id === undefined){
+                dispatch({type: MovieActionTypes.FETCH_MOVIE_BY_ID, payload: {}})
+                return
+            }
             dispatch({type: MovieActionTypes.LOAD})
             let movie = await axios.get(`https://avvakumov-movies-backend.herokuapp.com/api/movie/${id}`)
             let treilerId = await Api.FetchMovieTrailer(movie.data.id)
             let payload = {...movie.data, treilerId: treilerId}
             dispatch({type: MovieActionTypes.FETCH_MOVIE_BY_ID, payload: payload})
-            // dispatch({type: MovieActionTypes.FETCH_MOVIE_TREILER_ID, payload: treilerId})
 
         } catch (e) {
             dispatch({type: MovieActionTypes.FETCH_GENRE_ERROR, payload: 'Ошибка при загруке фильма'})

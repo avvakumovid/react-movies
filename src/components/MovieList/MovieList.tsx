@@ -25,16 +25,20 @@ const MovieList: React.FC = () => {
     useEffect(() => {
         fetchMoviesByGenreId(page, genreId)
     }, [page, genreId])
-
-    let style: CSSProperties = {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center'
+    if (loading) {
+        return (
+            <div style={block}>
+                <Load/>
+            </div>)
     }
-
+    if (error) {
+        return (
+            <div style={block}>
+                <h1>{error}</h1>
+            </div>)
+    }
     return (
         <div style={block}>
-            <LoadingOrError loading={loading} error={error}/>
             {movies.map(m => {
                 let src = 'https://image.tmdb.org/t/p/w500/' + m.poster_path
                 return (
