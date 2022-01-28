@@ -1,11 +1,11 @@
-import React, {CSSProperties, useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
-import {useAction} from "../../hooks/useAction";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
-import MovieListItem from "./MovieListItem";
-import Load from "../UI/Load/Load";
-import {block} from "./MovieStyle";
-import LoadingOrError from "../UI/LoadingOrError/LoadingOrError";
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
+import {useAction} from '../../hooks/useAction';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
+import MovieListItem from './MovieListItem';
+import Load from '../UI/Load/Load';
+import {block} from './MovieStyle';
+import Paginator from '../UI/Paginator/Paginator';
 
 const MovieList: React.FC = () => {
     let {id} = useParams()
@@ -46,7 +46,9 @@ const MovieList: React.FC = () => {
                                    voteAverage={m.vote_average} releaseDate={m.release_date} _id={m._id}/>
                 )
             })}
+            <Paginator pageSize={20}  pageCount={totalPages}/>
         </div>
+
     );
 };
 
