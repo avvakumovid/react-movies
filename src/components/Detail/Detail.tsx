@@ -54,7 +54,7 @@ const Detail: React.FC = () => {
             </div>)
     }
     return (
-        <div >
+        <div style={block} >
             {(loading || !movie)
                 ? <Load/>
                 :<>
