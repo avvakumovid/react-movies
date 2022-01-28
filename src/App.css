@@ -1,48 +1,70 @@
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap");
 /*Обнуление*/
 * {
-  margin: 0;
-  padding: 0;
-  /*height: 100%;*/
-  font-family: sans-serif;
-  /*background-color: #232a31;*/
-  font-family: '72', '72full', Arial, Helvetica, sans-serif;
-  /*color: #91c8f6;*/
+    margin: 0;
+    padding: 0;
+    /*height: 100%;*/
+    font-family: sans-serif;
+    /*background-color: #232a31;*/
+    font-family: '72', '72full', Arial, Helvetica, sans-serif;
+    /*color: #91c8f6;*/
 }
 
 html,
 body,
 .wrapper {
-  height: 100%;
-  background-color: #232a31;
+    height: 100%;
+    background-color: #232a31;
 }
 
 .container {
-  max-width: 1280px;
-  margin: 0 auto;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 .top {
-  min-height: 768px;
+    min-height: 768px;
 }
 
 .header {
-  background-color: #232a31;
-  display: flex;
-  justify-content: space-between;
+    background-color: #232a31;
+    display: flex;
+    justify-content: space-between;
 }
 
 .main {
-  background-color: #1c2228;
-  min-height: 100%;
-  color: #fafafa;
-}
-
-.searchInput{
-  width: 90%;
-  margin: 10px;
+    background-color: #1c2228;
+    min-height: 100%;
+    color: #fafafa;
 
 }
+
+.searchInput {
+    width: 90%;
+    margin: 10px;
+
+}
+
 .loginBtn {
-  margin: 10px;
+    margin: 10px;
+}
+
+.image {
+    background-image: url('https://image.tmdb.org/t/p/original/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg');
+    background-size: cover;
+    display: block;
+    filter: blur(10px);
+    opacity: 0.7;
+    -webkit-filter: blur(5px);
+    height: 800px;
+    left: 0;
+    position: fixed;
+    right: 0;
+    z-index: 1;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.35);
+    position: relative;
+    z-index: 2;
 }

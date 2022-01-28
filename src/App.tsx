@@ -9,7 +9,8 @@ function App() {
         <div className="wrapper">
             <Header/>
             <div className="container main">
-                <AppRouter/>
+                <div className='image'></div>
+                <div className='content'><AppRouter/></div>
             </div>
         </div>
     );

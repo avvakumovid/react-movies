@@ -28,7 +28,6 @@ const Detail: React.FC = () => {
         display: 'block',
         filter: 'blur(10px)',
         opacity: '0.7',
-        // webkitFilter: 'blur(5px)',
         height: '800px',
         left: 0,
         position: 'fixed',

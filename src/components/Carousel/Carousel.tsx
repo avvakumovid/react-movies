@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {CSSProperties, useEffect} from 'react';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {useAction} from '../../hooks/useAction';
 import AliceCarousel from 'react-alice-carousel';
@@ -24,7 +24,25 @@ const Carousel: React.FC = () => {
         568: {items: 2},
         1024: {items: 3},
     };
+    const padding: CSSProperties = {
+        padding: '20px 30px'
+    }
+    const leftBtn: CSSProperties = {
+        position: 'fixed',
+        top: 350,
+        left: 120,
+        fontSize: 35,
+        color: '#91c8f6',
+    }
 
+    const rightBtn: CSSProperties = {
+        position: 'fixed',
+        top: 350,
+        right: 120,
+        fontSize: 35,
+        color: '#91c8f6',
+
+    }
     if (loading) {
         return (
             <div style={block}>
@@ -36,10 +54,16 @@ const Carousel: React.FC = () => {
         return <h1>{error}</h1>
     }
     return (
+        <div style={{...block, ...padding}}>
+            <AliceCarousel items={items} responsive={responsive}
+                           renderPrevButton={() => {
+                               return <span style={leftBtn}>⮜</span>
+                           }}
+                           renderNextButton={() => {
+                               return <span style={rightBtn}>⮞</span>
+                           }}
 
-        <div className="carousel">
-            <LoadingOrError loading={loading} error={error}/>
-            <AliceCarousel items={items} responsive={responsive}/>
+            />
         </div>
 
     );
