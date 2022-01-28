@@ -1,4 +1,4 @@
-import {MovieAction, MovieActionTypes, MovieState} from "../../types/movie";
+import {MovieAction, MovieActionTypes, MovieState} from '../../types/movie';
 
 const initialState: MovieState = {
     genre: [],
@@ -30,6 +30,8 @@ export const movieReducer = (state = initialState, action: MovieAction): MovieSt
             return {...state, loading: false, movie: action.payload}
         case MovieActionTypes.FETCH_MOVIE_TREILER_ID:
             return {...state, movieTreilerId: action.payload }
+        case MovieActionTypes.RESET_MOVIE:
+            return {...state, movie: []}
         default:
             return state
     }

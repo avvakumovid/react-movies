@@ -1,7 +1,7 @@
-import {Dispatch} from "react";
-import {MovieAction, MovieActionTypes} from "../../types/movie";
-import axios from "axios";
-import {Api} from "../../API/api";
+import {Dispatch} from 'react';
+import {MovieAction, MovieActionTypes} from '../../types/movie';
+import axios from 'axios';
+import {Api} from '../../API/api';
 
 export const fetchGenre = () => {
     return async (dispatch: Dispatch<MovieAction>) => {
@@ -59,4 +59,9 @@ export const fetchMovieById = (id: string | undefined) => {
     }
 }
 
+export const resetMovie = () => {
+    return (dispatch : Dispatch<MovieAction>) => {
+        dispatch({type: MovieActionTypes.RESET_MOVIE})
+    }
+}
 

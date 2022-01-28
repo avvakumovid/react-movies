@@ -15,7 +15,8 @@ export enum MovieActionTypes {
     FETCH_GENRE_ERROR = 'FETCH_GENRE_ERROR',
     FETCH_MOVIES_BY_GENRE = 'FETCH_MOVIES_BY_GENRE',
     FETCH_MOVIE_BY_ID = 'FETCH_MOVIE_BY_ID',
-    FETCH_MOVIE_TREILER_ID = 'FETCH_MOVIE_TREILER_ID'
+    FETCH_MOVIE_TREILER_ID = 'FETCH_MOVIE_TREILER_ID',
+    RESET_MOVIE = 'RESET_MOVIE'
 }
 
 interface Load {
@@ -52,6 +53,10 @@ interface FetchMovieTrailerId {
     payload: string
 }
 
+interface ResetMovie {
+    type: MovieActionTypes.RESET_MOVIE
+}
+
 export type MovieAction =
     Load
     | FetchGenreSuccessAction
@@ -59,3 +64,4 @@ export type MovieAction =
     | FetchMoviesByGenre
     | FetchMovieById
     | FetchMovieTrailerId
+    | ResetMovie
