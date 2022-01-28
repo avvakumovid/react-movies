@@ -7,9 +7,7 @@ type Props = {
 const btn: CSSProperties = {
     padding: 5,
     borderRadius: 5,
-    backgroundColor: '#232a31',
     border: '1px solid #91c8f6',
-    color: '#91c8f6',
     fontSize: 25
 }
 const Button: React.FC<Props> = ({style, callback, ...props}) => {

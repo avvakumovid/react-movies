@@ -50,11 +50,11 @@ body,
 }
 
 .image {
-    background-image: url('https://image.tmdb.org/t/p/original/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg');
+    background-image: url('https://www.wallpapertip.com/wmimgs/230-2304368_movie-themed-wallpaper.jpg');
     background-size: cover;
     display: block;
     filter: blur(10px);
-    opacity: 0.7;
+    opacity: 1;
     -webkit-filter: blur(5px);
     height: 800px;
     left: 0;
@@ -64,7 +64,7 @@ body,
 }
 
 .content {
-    background: rgba(255, 255, 255, 0.35);
+    /*background: rgba(255, 255, 255, 0.35);*/
     position: relative;
     z-index: 2;
 }

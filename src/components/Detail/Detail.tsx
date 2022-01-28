@@ -27,7 +27,7 @@ const Detail: React.FC = () => {
         backgroundSize: 'cover',
         display: 'block',
         filter: 'blur(10px)',
-        opacity: '0.7',
+        opacity: '1',
         height: '800px',
         left: 0,
         position: 'fixed',
@@ -38,7 +38,7 @@ const Detail: React.FC = () => {
         position: 'relative',
         zIndex: 2,
         display: 'flex',
-        padding: 40
+        height: 785,
     }
     useEffect(() => {
         if (movie) {
@@ -54,10 +54,10 @@ const Detail: React.FC = () => {
             </div>)
     }
     return (
-        <div style={block}>
+        <div >
             {(loading || !movie)
                 ? <Load/>
-                : <div >
+                :<>
                     <div style={backgroundImage}></div>
                     <div style={content}>
                         <div style={img}>
@@ -74,7 +74,7 @@ const Detail: React.FC = () => {
                             <div style={padding}><strong>Overview:</strong> {movie.overview}</div>
                         </div>
                     </div>
-                </div>}
+                </>}
         </div>
     );
 

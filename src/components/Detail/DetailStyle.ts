@@ -2,22 +2,25 @@ import {CSSProperties} from 'react';
 
 export const style = {
     display: 'flex',
-    padding: 40
+    padding: 40,
+
 }
 
 const backGround = {
-    backgroundColor: 'rgba(255, 255,255, 0.2)',
-    padding: 20
+    background: 'rgb(35,42,49,0.8)',
+    padding: 40,
+
 }
 
 export const img = {
     width: '30%',
-    // ...backGround
+    ...backGround
+
 
 }
 export const info = {
     width: '70%',
-    // ...backGround
+    ...backGround
 
 }
 export const padding: CSSProperties = {

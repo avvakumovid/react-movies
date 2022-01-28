@@ -4,13 +4,14 @@ export const style: CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
     margin: 20,
-    backgroundColor: '#232a31',
+    background: 'rgb(35,42,49,0.8)',
     borderRadius: 5,
     alignContent: 'space-around',
-    color: 'white',
+    color: '#91c8f6',
     fontSize: 17,
     justifyContent: 'space-between',
     width: 200,
+    border: '1px solid #91c8f6'
 }
 export const margin: CSSProperties = {
     marginTop: 10,
@@ -23,7 +24,7 @@ export const btn: CSSProperties = {
     alignSelf: 'flex-end',
     marginRight: 10,
     marginBottom: 10,
-    backgroundColor: '#232a31',
+    background: 'rgb(35,42,49,0.1)',
     border: '1px solid #91c8f6',
     color: '#91c8f6',
     fontSize: 25

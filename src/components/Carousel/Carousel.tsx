@@ -8,6 +8,7 @@ import {useNavigate} from 'react-router-dom';
 import {block} from '../MovieList/MovieStyle';
 import LoadingOrError from '../UI/LoadingOrError/LoadingOrError';
 import Load from '../UI/Load/Load';
+import Header from '../Header/Header';
 
 const Carousel: React.FC = () => {
     const {genre, loading, error} = useTypedSelector(state => state.movie)
@@ -53,19 +54,20 @@ const Carousel: React.FC = () => {
     if (error) {
         return <h1>{error}</h1>
     }
-    return (
-        <div style={{...block, ...padding}}>
-            <AliceCarousel items={items} responsive={responsive}
-                           renderPrevButton={() => {
-                               return <span style={leftBtn}>⮜</span>
-                           }}
-                           renderNextButton={() => {
-                               return <span style={rightBtn}>⮞</span>
-                           }}
+    return (<div>
+            <Header/>
+            <div style={{...block, ...padding}}>
+                <AliceCarousel items={items} responsive={responsive}
+                               renderPrevButton={() => {
+                                   return <span style={leftBtn}>⮜</span>
+                               }}
+                               renderNextButton={() => {
+                                   return <span style={rightBtn}>⮞</span>
+                               }}
 
-            />
+                />
+            </div>
         </div>
-
     );
 };
 
