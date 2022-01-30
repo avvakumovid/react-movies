@@ -42,7 +42,7 @@ export const fetchMoviesByGenreId = (page: number, id: number) => {
 export const fetchMovieById = (id: string | undefined) => {
     return async (dispatch: Dispatch<MovieAction>) => {
         try {
-            if(id === undefined){
+            if (id === undefined) {
                 dispatch({type: MovieActionTypes.FETCH_MOVIE_BY_ID, payload: {}})
                 return
             }
@@ -60,8 +60,13 @@ export const fetchMovieById = (id: string | undefined) => {
 }
 
 export const resetMovie = () => {
-    return (dispatch : Dispatch<MovieAction>) => {
+    return (dispatch: Dispatch<MovieAction>) => {
         dispatch({type: MovieActionTypes.RESET_MOVIE})
     }
 }
 
+export const setCurrentPage = (page: number) => {
+    return (dispatch: Dispatch<MovieAction>) => {
+        dispatch({type: MovieActionTypes.SET_CURRENT_PAGE, payload: page})
+    }
+}

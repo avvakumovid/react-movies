@@ -6,7 +6,8 @@ export interface MovieState {
     totalPages: number;
     itemInPage: number;
     movie: any,
-    movieTreilerId: string
+    movieTreilerId: string,
+    currentPage: number
 }
 
 export enum MovieActionTypes {
@@ -16,7 +17,8 @@ export enum MovieActionTypes {
     FETCH_MOVIES_BY_GENRE = 'FETCH_MOVIES_BY_GENRE',
     FETCH_MOVIE_BY_ID = 'FETCH_MOVIE_BY_ID',
     FETCH_MOVIE_TREILER_ID = 'FETCH_MOVIE_TREILER_ID',
-    RESET_MOVIE = 'RESET_MOVIE'
+    RESET_MOVIE = 'RESET_MOVIE',
+    SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 }
 
 interface Load {
@@ -57,6 +59,11 @@ interface ResetMovie {
     type: MovieActionTypes.RESET_MOVIE
 }
 
+interface SetCurrentPage {
+    type: MovieActionTypes.SET_CURRENT_PAGE
+    payload: number
+}
+
 export type MovieAction =
     Load
     | FetchGenreSuccessAction
@@ -65,3 +72,4 @@ export type MovieAction =
     | FetchMovieById
     | FetchMovieTrailerId
     | ResetMovie
+    | SetCurrentPage

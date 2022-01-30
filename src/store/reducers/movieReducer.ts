@@ -8,7 +8,8 @@ const initialState: MovieState = {
     totalPages: 1,
     itemInPage: 20,
     movie: null,
-    movieTreilerId: ''
+    movieTreilerId: '',
+    currentPage: 1
 }
 export const movieReducer = (state = initialState, action: MovieAction): MovieState => {
     switch (action.type) {
@@ -32,6 +33,8 @@ export const movieReducer = (state = initialState, action: MovieAction): MovieSt
             return {...state, movieTreilerId: action.payload }
         case MovieActionTypes.RESET_MOVIE:
             return {...state, movie: []}
+        case MovieActionTypes.SET_CURRENT_PAGE:
+            return {...state, currentPage: action.payload}
         default:
             return state
     }
