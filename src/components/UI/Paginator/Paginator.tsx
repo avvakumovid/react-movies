@@ -1,16 +1,23 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 type Props = {
     pageSize: number,
-    pageCount: number
+    pageCount: number,
+    // setPage: React.Dispatch<React.SetStateAction<number>>,
+    page: number,
+    setPage: (page: number) => {}
 }
 
-const Paginator: React.FC<Props> = ({pageCount}) => {
+const Paginator: React.FC<Props> = ({pageCount, setPage, page}) => {
     const pageSize = 10
-    const [head, setHead] = useState(1)
-    const [portion, setPortion] = useState(head * pageSize)
-    const [currentPage, setCurreantPage] = useState(1)
-    // const [totalPages, setTotalpages] = useState(Math.floor(totalItem / pageSize))
+    let h;
+    if (page < 10) {
+        h = 1
+    } else {
+        h = Math.trunc(page * 0.1) * pageSize
+    }
+    const [head, setHead] = useState(h)
+    const [portion, setPortion] = useState(Math.trunc(page * 0.1) * pageSize + pageSize)
     const [totalPages, setTotalpages] = useState(pageCount)
     const pages = []
     let currentPageStyle = {
@@ -29,65 +36,68 @@ const Paginator: React.FC<Props> = ({pageCount}) => {
     }
     const setNextPortion = () => {
         setHead(head + 10)
-        setCurreantPage(head + 10)
-        console.log('currentPage', currentPage)
-        console.log('head', head)
+        // setCurreantPage(head + 10)
+        setPage(head + 10)
     }
     const setPrevPortion = () => {
         setHead(head - 10)
-        setCurreantPage(head - 10)
-        console.log('currentPage', currentPage)
-        console.log('head',head)
+        // setCurreantPage(head - 10)
+        setPage(head - 10)
     }
 
     const setFirstPage = () => {
-        setCurreantPage(1)
+        // setCurreantPage(1)
+        setPage(1)
         setHead(1)
     }
     const setLastPage = () => {
-        setCurreantPage(totalPages)
+        // setCurreantPage(totalPages)
+        setPage(totalPages)
         setHead(totalPages - portion + 1)
     }
-    if (portion + head < totalPages) {
-        for (let i = head; i <= portion + head - 1; i++) {
-            pages.push(<span onClick={() => {
-                setCurreantPage(i)
-            }} style={(i === currentPage) ? currentPageStyle : {}}>{i}</span>)
+    if (portion < totalPages) {
+        for (let i = head; i <= portion  - 1; i++) {
+            pages.push(<span key={i} onClick={() => {
+                // setCurreantPage(i)
+                setPage(i)
+            }} style={(i === page) ? currentPageStyle : {}}>{i}</span>)
         }
     } else {
         for (let i = totalPages - pageSize; i <= totalPages - 1; i++) {
-            pages.push(<span onClick={() => {
-                setCurreantPage(i)
-            }} style={(i === currentPage) ? currentPageStyle : {}}>{i}</span>)
+            pages.push(<span key={i} onClick={() => {
+                // setCurreantPage(i)
+                setPage(i)
+            }} style={(i === page) ? currentPageStyle : {}}>{i}</span>)
         }
     }
 
 
     return (
         <div style={style}>
-            {currentPage != 1 &&
-                <span onClick={() => {
-                    setCurreantPage(currentPage - 1)
-                    setHead(Math.trunc((currentPage - 2) / pageSize) * pageSize + 1)
-                }}>◀</span>
+            {page !== 1 &&
+            <span onClick={() => {
+                // setCurreantPage(currentPage - 1)
+                setPage(page - 1)
+                setHead(Math.trunc((page - 2) / pageSize) * pageSize + 1)
+            }}>◀</span>
             }
-            {(head != 1) && <span onClick={() => {
+            {(head !== 1) && <span onClick={() => {
                 setFirstPage()
             }}>1</span>}
-            {(head != 1) && <span onClick={setPrevPortion}>...</span>}
+            {(head !== 1) && <span onClick={setPrevPortion}>...</span>}
             {pages}
             {(head < totalPages - pageSize) && <span onClick={setNextPortion}>...</span>}
-            {currentPage != totalPages && <span onClick={() => {
+            {page !== totalPages && <span onClick={() => {
                 setLastPage()
             }}>{totalPages}</span>}
-            {currentPage === totalPages && <span style={currentPageStyle} onClick={() => {
+            {page === totalPages && <span style={currentPageStyle} onClick={() => {
                 setLastPage()
             }}>{totalPages}</span>}
-            {currentPage != totalPages &&
+            {page !== totalPages &&
             <span onClick={() => {
-                setCurreantPage(currentPage + 1)
-                setHead(Math.trunc(currentPage / pageSize) * pageSize + 1)
-                console.log(head)
+                // setCurreantPage(currentPage + 1)
+                setPage(page + 1)
+                setHead(Math.trunc(page / pageSize) * pageSize + 1)
             }}>▶</span>
             }
         </div>

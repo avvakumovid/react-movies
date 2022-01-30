@@ -17,14 +17,14 @@ const MovieList: React.FC = () => {
         totalPages,
         itemInPage,
         loading,
-        error
+        error,
+        currentPage
     } = useTypedSelector(state => state.movie)
-    const {fetchMoviesByGenreId} = useAction()
+    const {fetchMoviesByGenreId, setCurrentPage} = useAction()
     const [genreId, setGenreId] = useState(parseInt(id))
-    const [page, setPage] = useState(1)
     useEffect(() => {
-        fetchMoviesByGenreId(page, genreId)
-    }, [page, genreId])
+        fetchMoviesByGenreId(currentPage, genreId)
+    }, [currentPage, genreId])
     if (loading) {
         return (
             <div style={block}>
@@ -38,15 +38,20 @@ const MovieList: React.FC = () => {
             </div>)
     }
     return (
-        <div style={block}>
-            {movies.map(m => {
-                let src = 'https://image.tmdb.org/t/p/w500/' + m.poster_path
-                return (
-                    <MovieListItem src={src} title={m.title} id={m.id} overview={m.overview} key={m.id}
-                                   voteAverage={m.vote_average} releaseDate={m.release_date} _id={m._id}/>
-                )
-            })}
-            <Paginator pageSize={20}  pageCount={totalPages}/>
+        <div style={block} >
+            <div style={block}>
+                {movies.map(m => {
+                    let src = 'https://image.tmdb.org/t/p/w500/' + m.poster_path
+                    return (
+                        <MovieListItem src={src} title={m.title} id={m.id} overview={m.overview} key={m.id}
+                                       voteAverage={m.vote_average} releaseDate={m.release_date} _id={m._id}/>
+                    )
+                })}
+            </div>
+            <Paginator page={currentPage}
+                       // setPage={se}
+                        setPage={setCurrentPage}
+                       pageSize={20} pageCount={totalPages}/>
         </div>
 
     );
