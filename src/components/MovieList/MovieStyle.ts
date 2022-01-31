@@ -22,8 +22,7 @@ export const btn: CSSProperties = {
     width: 40,
     borderRadius: 5,
     alignSelf: 'flex-end',
-    marginRight: 10,
-    marginBottom: 10,
+    margin: 10,
     background: 'rgb(35,42,49,0.1)',
     border: '1px solid #91c8f6',
     color: '#91c8f6',
@@ -31,7 +30,9 @@ export const btn: CSSProperties = {
 }
 
 export const img: CSSProperties = {
-    borderRadius: 5
+    borderTopRightRadius: 5,
+    borderTopLeftRadius: 5,
+    height: 300
 }
 
 export const block: CSSProperties = {

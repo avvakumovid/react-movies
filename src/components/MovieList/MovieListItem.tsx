@@ -1,7 +1,7 @@
 import React, {CSSProperties} from 'react';
-import {btn, img, margin, style} from "./MovieStyle";
-import Button from "../UI/Button/Button";
-import {useNavigate} from "react-router-dom";
+import {btn, img, margin, style} from './MovieStyle';
+import Button from '../UI/Button/Button';
+import {useNavigate} from 'react-router-dom';
 import bookmark from '../../img/icon/bookmark.png'
 import {getRaitingColor} from '../../services/RitingColor/raitingColor';
 import {getFormattedDate} from '../../services/DateFormatter/dateFormattet';
@@ -35,10 +35,10 @@ const MovieListItem: React.FC<Props> = (
     return (
         <div style={style} onClick={() => navigate(`/detail/${_id}`)}>
             <img style={img} alt={title} src={src}/>
-            <strong style={margin}>{title}</strong>
+            <div style={{height: 50, display: 'flex'}}><strong style={margin}>{title}</strong></div>
             <span style={{...margin, ...voteColor}}>{voteAverage}</span>
             <span style={margin}>{formatedReleaseDate}</span>
-            <Button style={btn} callback={() => console.log(id)}><img alt='bookmark' src={bookmark}/></Button>
+            <Button style={btn} callback={() => console.log(id)}><img alt="bookmark" src={bookmark}/></Button>
         </div>
     );
 };

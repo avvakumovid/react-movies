@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {useAction} from '../../hooks/useAction';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
@@ -25,6 +25,16 @@ const MovieList: React.FC = () => {
     useEffect(() => {
         fetchMoviesByGenreId(currentPage, genreId)
     }, [currentPage])
+    const movieList = useMemo(() =>{
+        console.log('ws')
+        return  movies.map(m => {
+        let src = 'https://image.tmdb.org/t/p/w500/' + m.poster_path
+        return (
+            <MovieListItem src={src} title={m.title} id={m.id} overview={m.overview} key={m.id}
+                           voteAverage={m.vote_average} releaseDate={m.release_date} _id={m._id}/>
+        )
+    })}, [movies])
+
     if (loading) {
         return (
             <div style={block}>
@@ -37,16 +47,19 @@ const MovieList: React.FC = () => {
                 <h1>{error}</h1>
             </div>)
     }
+
+
     return (
         <div style={block}>
             <div style={block}>
-                {movies.map(m => {
-                    let src = 'https://image.tmdb.org/t/p/w500/' + m.poster_path
-                    return (
-                        <MovieListItem src={src} title={m.title} id={m.id} overview={m.overview} key={m.id}
-                                       voteAverage={m.vote_average} releaseDate={m.release_date} _id={m._id}/>
-                    )
-                })}
+                {/*{movies.map(m => {*/}
+                {/*    let src = 'https://image.tmdb.org/t/p/w500/' + m.poster_path*/}
+                {/*    return (*/}
+                {/*        <MovieListItem src={src} title={m.title} id={m.id} overview={m.overview} key={m.id}*/}
+                {/*                       voteAverage={m.vote_average} releaseDate={m.release_date} _id={m._id}/>*/}
+                {/*    )*/}
+                {/*})}*/}
+                {movieList}
             </div>
             <Paginator page={currentPage}
                        setPage={setCurrentPage}
@@ -56,4 +69,4 @@ const MovieList: React.FC = () => {
     );
 };
 
-export default MovieList;
+export default React.memo(MovieList);

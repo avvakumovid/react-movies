@@ -16,7 +16,7 @@ const Detail: React.FC = () => {
     useEffect(() => {
         fetchMovieById(id)
         return () => {
-            resetMovie()
+            // resetMovie()
         }
     }, [])
     let {loading, error, movie} = useTypedSelector(state => state.movie)
