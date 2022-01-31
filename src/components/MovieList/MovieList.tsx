@@ -8,9 +8,9 @@ import {block} from './MovieStyle';
 import Paginator from '../UI/Paginator/Paginator';
 
 const MovieList: React.FC = () => {
-    let {id} = useParams()
+    let {id, page} = useParams()
     if (!id) {
-        id = '2'
+        id = '2';
     }
     const {
         movies,
@@ -24,7 +24,13 @@ const MovieList: React.FC = () => {
     const [genreId, setGenreId] = useState(parseInt(id))
     useEffect(() => {
         fetchMoviesByGenreId(currentPage, genreId)
-    }, [currentPage, genreId])
+    }, [currentPage])
+    // useEffect(() => {
+    //     fetchMoviesByGenreId(currentPage, genreId)
+    // }, [])
+    useEffect(() => {
+        console.log('was')
+    }, [])
     if (loading) {
         return (
             <div style={block}>

@@ -12,10 +12,11 @@ import Header from '../Header/Header';
 
 const Carousel: React.FC = () => {
     const {genre, loading, error} = useTypedSelector(state => state.movie)
-    const {fetchGenre} = useAction()
+    const {fetchGenre, setCurrentPage} = useAction()
     const navigate = useNavigate()
     useEffect(() => {
-        fetchGenre()
+        fetchGenre();
+        setCurrentPage(1)
     }, [])
 
     const items = genre.map(g => <div onClick={() => navigate(`/genre/${g.id}`)} className="carousel-itme"><img
