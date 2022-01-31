@@ -18,7 +18,6 @@ export const fetchGenre = () => {
 export const fetchMoviesByGenreId = (page: number, id: number) => {
     return async (dispatch: Dispatch<MovieAction>) => {
         try {
-            // dispatch({type: MovieActionTypes.SET_CURRENT_PAGE, payload: page})
             dispatch({type: MovieActionTypes.LOAD})
             let movies = await axios.get('https://avvakumov-movies-backend.herokuapp.com/api/movies', {
                 params: {

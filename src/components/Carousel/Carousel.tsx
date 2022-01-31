@@ -6,7 +6,6 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import './Carousel.css'
 import {useNavigate} from 'react-router-dom';
 import {block} from '../MovieList/MovieStyle';
-import LoadingOrError from '../UI/LoadingOrError/LoadingOrError';
 import Load from '../UI/Load/Load';
 import Header from '../Header/Header';
 
@@ -65,7 +64,6 @@ const Carousel: React.FC = () => {
                                renderNextButton={() => {
                                    return <span style={rightBtn}>⮞</span>
                                }}
-
                 />
             </div>
         </div>

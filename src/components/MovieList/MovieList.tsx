@@ -25,12 +25,6 @@ const MovieList: React.FC = () => {
     useEffect(() => {
         fetchMoviesByGenreId(currentPage, genreId)
     }, [currentPage])
-    // useEffect(() => {
-    //     fetchMoviesByGenreId(currentPage, genreId)
-    // }, [])
-    useEffect(() => {
-        console.log('was')
-    }, [])
     if (loading) {
         return (
             <div style={block}>
@@ -44,7 +38,7 @@ const MovieList: React.FC = () => {
             </div>)
     }
     return (
-        <div style={block} >
+        <div style={block}>
             <div style={block}>
                 {movies.map(m => {
                     let src = 'https://image.tmdb.org/t/p/w500/' + m.poster_path
@@ -55,8 +49,8 @@ const MovieList: React.FC = () => {
                 })}
             </div>
             <Paginator page={currentPage}
-                       // setPage={se}
-                        setPage={setCurrentPage}
+                // setPage={se}
+                       setPage={setCurrentPage}
                        pageSize={20} pageCount={totalPages}/>
         </div>
 
