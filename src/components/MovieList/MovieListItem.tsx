@@ -35,7 +35,7 @@ const MovieListItem: React.FC<Props> = (
     return (
         <div style={style} onClick={() => navigate(`/detail/${_id}`)}>
             <img style={img} alt={title} src={src}/>
-            <div style={{height: 50, display: 'flex'}}><strong style={margin}>{title}</strong></div>
+            <div style={{height: 60, display: 'flex', alignItems: 'center'}}><strong style={margin}>{title}</strong></div>
             <span style={{...margin, ...voteColor}}>{voteAverage}</span>
             <span style={margin}>{formatedReleaseDate}</span>
             <Button style={btn} callback={() => console.log(id)}><img alt="bookmark" src={bookmark}/></Button>
