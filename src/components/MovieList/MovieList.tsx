@@ -49,7 +49,6 @@ const MovieList: React.FC = () => {
                 })}
             </div>
             <Paginator page={currentPage}
-                // setPage={se}
                        setPage={setCurrentPage}
                        pageSize={20} pageCount={totalPages}/>
         </div>

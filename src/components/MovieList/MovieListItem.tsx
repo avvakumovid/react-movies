@@ -3,12 +3,14 @@ import {btn, img, margin, style} from "./MovieStyle";
 import Button from "../UI/Button/Button";
 import {useNavigate} from "react-router-dom";
 import bookmark from '../../img/icon/bookmark.png'
+import {getRaitingColor} from '../../services/RitingColor/raitingColor';
+import {getFormattedDate} from '../../services/DateFormatter/dateFormattet';
 
 type Props = {
     src: string,
     title: string,
     overview: string,
-    voteAverage: string,
+    voteAverage: number,
     releaseDate: string,
     id: number,
     _id: string
@@ -26,12 +28,16 @@ const MovieListItem: React.FC<Props> = (
         ...props
     }) => {
     const navigate = useNavigate()
+    const voteColor = {
+        color: getRaitingColor(voteAverage)
+    }
+    const formatedReleaseDate = getFormattedDate(releaseDate)
     return (
         <div style={style} onClick={() => navigate(`/detail/${_id}`)}>
             <img style={img} alt={title} src={src}/>
             <strong style={margin}>{title}</strong>
-            <span style={margin}>{voteAverage}</span>
-            <span style={margin}>{releaseDate}</span>
+            <span style={{...margin, ...voteColor}}>{voteAverage}</span>
+            <span style={margin}>{formatedReleaseDate}</span>
             <Button style={btn} callback={() => console.log(id)}><img alt='bookmark' src={bookmark}/></Button>
         </div>
     );
