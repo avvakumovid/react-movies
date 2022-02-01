@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {useTypedSelector} from '../hooks/useTypedSelector';
 
 export class Api {
     static async FetchMovieTrailer(id: number) {
@@ -43,7 +44,6 @@ export class Api {
             })
             return response.data
         } catch (e: any) {
-            alert(e.response.data.message)
             localStorage.removeItem('token')
         }
     }
@@ -54,9 +54,36 @@ export class Api {
                 username,
                 password
             })
-            alert(response.data.message)
+            alert('Пользователь создан')
         } catch (e: any) {
             alert(e.response.data.message)
         }
+    }
+
+    static async FetchWatchList(token: string){
+        try {
+            const response = await axios.get('https://avvakumov-movies-backend.herokuapp.com/api/usermovie',
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+            return response
+        }catch (e) {
+            console.log(e)
+        }
+
+    }
+
+    static async AddMovieToWatchList(userId: string, movieId: string){
+        if(!userId){
+            return 'Пользователь не найден'
+        }
+        let response = await axios.post('https://avvakumov-movies-backend.herokuapp.com/api/user/watchlist', {
+            userId,
+            movieId
+        })
+        alert(response.data.message)
+        return response
     }
 }

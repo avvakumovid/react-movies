@@ -4,6 +4,7 @@ import Modal from '../UI/Modal/Modal';
 import {useAction} from '../../hooks/useAction';
 import {Api} from '../../API/api';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {useNavigate} from 'react-router-dom';
 
 const Header: React.FC = () => {
     const [loginActive, setLoginActive] = useState(false)
@@ -15,6 +16,10 @@ const Header: React.FC = () => {
         setLoginActive(false)
     }
     const registration = Api.Registartion
+    const navigate = useNavigate()
+    const navToWotchList = () => {
+        navigate('/watchlist')
+    }
     return (<>
 
             <div className="container" style={headerStyle}>
@@ -34,7 +39,7 @@ const Header: React.FC = () => {
                         </button>
                     </> :
                     <>
-                        <button style={button}>WatchList</button>
+                        <button style={button} onClick={navToWotchList}>WatchList</button>
                         <button style={button} onClick={() => {
                             logOut()
                         }}>Logout

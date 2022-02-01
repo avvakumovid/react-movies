@@ -6,6 +6,8 @@ import bookmark from '../../img/icon/bookmark.png'
 import {getRaitingColor} from '../../services/RitingColor/raitingColor';
 import {getFormattedDate} from '../../services/DateFormatter/dateFormattet';
 import {isDisabled} from '@testing-library/user-event/dist/utils';
+import {Api} from '../../API/api';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
 
 type Props = {
     src: string,
@@ -33,6 +35,8 @@ const MovieListItem: React.FC<Props> = (
         color: getRaitingColor(voteAverage)
     }
     const formatedReleaseDate = getFormattedDate(releaseDate)
+    const {currentUser} = useTypedSelector(state => state.user)
+    const userId = currentUser?.id
     return (
         <div style={style} onClick={() => navigate(`/detail/${_id}`)}>
             <img style={img} alt={title} src={src}/>
@@ -43,6 +47,7 @@ const MovieListItem: React.FC<Props> = (
             <button style={btn} key={id} onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
+                Api.AddMovieToWatchList(userId, _id)
             }}><img alt="bookmark" src={bookmark}/></button>
         </div>
     );
