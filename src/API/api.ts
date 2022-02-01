@@ -86,4 +86,13 @@ export class Api {
         alert(response.data.message)
         return response
     }
+
+    static async DeleteMovieFromWatchList(userId: string, movieId: string){
+        if(!userId){
+            return 'Пользователь не найден'
+        }
+        let response = await axios.delete(`https://avvakumov-movies-backend.herokuapp.com/api/user/delete?userId=${userId}&movieId=${movieId}`)
+        alert(response.data.message)
+        return response
+    }
 }

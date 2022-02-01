@@ -28,7 +28,11 @@ const WatchListItem: React.FC<props> = ({title, overview, poster_path, vote_aver
             </div>
             <span>{vote_average}</span>
             <span>{release_date}</span>
-            <button className={style.btn} ><img className={style.icon} alt='bin' src={trash}/></button>
+            <button className={style.btn} onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                Api.DeleteMovieFromWatchList(userId, _id)
+            }} ><img className={style.icon} alt='bin' src={trash}/></button>
         </div>
     );
 };
