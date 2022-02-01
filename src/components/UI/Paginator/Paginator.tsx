@@ -35,7 +35,7 @@ const Paginator: React.FC<Props> = ({pageCount, setPage, page}) => {
     }
     const setNextPortion = () => {
         setHead(head + 10)
-        setPage(head + 10)
+            setPage(head + 10)
     }
     const setPrevPortion = () => {
         setHead(head - 10)

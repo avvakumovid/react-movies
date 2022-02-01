@@ -26,7 +26,6 @@ const MovieList: React.FC = () => {
         fetchMoviesByGenreId(currentPage, genreId)
     }, [currentPage])
     const movieList = useMemo(() =>{
-        console.log('ws')
         return  movies.map(m => {
         let src = 'https://image.tmdb.org/t/p/w500/' + m.poster_path
         return (
@@ -52,13 +51,6 @@ const MovieList: React.FC = () => {
     return (
         <div style={block}>
             <div style={block}>
-                {/*{movies.map(m => {*/}
-                {/*    let src = 'https://image.tmdb.org/t/p/w500/' + m.poster_path*/}
-                {/*    return (*/}
-                {/*        <MovieListItem src={src} title={m.title} id={m.id} overview={m.overview} key={m.id}*/}
-                {/*                       voteAverage={m.vote_average} releaseDate={m.release_date} _id={m._id}/>*/}
-                {/*    )*/}
-                {/*})}*/}
                 {movieList}
             </div>
             <Paginator page={currentPage}

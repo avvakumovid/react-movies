@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import bookmark from '../../img/icon/bookmark.png'
 import {getRaitingColor} from '../../services/RitingColor/raitingColor';
 import {getFormattedDate} from '../../services/DateFormatter/dateFormattet';
+import {isDisabled} from '@testing-library/user-event/dist/utils';
 
 type Props = {
     src: string,
@@ -35,10 +36,14 @@ const MovieListItem: React.FC<Props> = (
     return (
         <div style={style} onClick={() => navigate(`/detail/${_id}`)}>
             <img style={img} alt={title} src={src}/>
-            <div style={{height: 60, display: 'flex', alignItems: 'center'}}><strong style={margin}>{title}</strong></div>
+            <div style={{height: 60, display: 'flex', alignItems: 'center'}}><strong style={margin}>{title}</strong>
+            </div>
             <span style={{...margin, ...voteColor}}>{voteAverage}</span>
             <span style={margin}>{formatedReleaseDate}</span>
-            <Button style={btn} callback={() => console.log(id)}><img alt="bookmark" src={bookmark}/></Button>
+            <button style={btn} key={id} onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+            }}><img alt="bookmark" src={bookmark}/></button>
         </div>
     );
 };

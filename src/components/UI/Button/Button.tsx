@@ -2,7 +2,7 @@ import React, {CSSProperties} from 'react';
 
 type Props = {
     style: CSSProperties,
-    callback: any,
+    callback: (e: any) => {},
 }
 const btn: CSSProperties = {
     padding: 5,

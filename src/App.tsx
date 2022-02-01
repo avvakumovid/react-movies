@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import AppRouter from './AppRouter';
+import Modal from './components/UI/Modal/Modal';
 
 function App() {
+
     return (
         <div className="wrapper">
             <div className="container main">
