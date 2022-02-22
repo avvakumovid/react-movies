@@ -28,12 +28,24 @@ export const logoutAction = () => {
 }
 
 export const fetchWatchList = (token: string) => {
-    return async (dispatch: Dispatch<UserAction>)=>{
+    return async (dispatch: Dispatch<UserAction>) => {
         dispatch({type: UserActionTypes.LOAD})
         const response = await Api.FetchWatchList(token)
-        if(response){
+        if (response) {
+                const watchList = response.data
+            dispatch({type: UserActionTypes.FETCH_WATCH_LIST_SUCCESS, payload: watchList})
+        }
+    }
+}
+
+export const deleteFromWatchList = (userid: string, movieid: string, token: string) => {
+    return async (dispatch: Dispatch<UserAction>) => {
+        await Api.DeleteMovieFromWatchList(userid, movieid)
+        const response = await Api.FetchWatchList(token)
+        if (response) {
             const watchList = response.data
             dispatch({type: UserActionTypes.FETCH_WATCH_LIST_SUCCESS, payload: watchList})
         }
+
     }
 }
